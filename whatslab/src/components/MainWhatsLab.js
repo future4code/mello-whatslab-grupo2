@@ -19,6 +19,7 @@ const MainWhatsLab = () => {
     return (
         <Main>
             <ConteudoMsg>Sou o Main</ConteudoMsg>
+            
         </Main>
 
     )
