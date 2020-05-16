@@ -5,12 +5,20 @@ const Main = styled.main`
 width: 100%;
 height: 47vh;
 `
+const ConteudoMsg = styled.p`
+display: inline-block;
+background-color: #202225;
+color: white;
+margin-left: 4px;
+border-radius: 5px;
+`
+
 
 const MainWhatsLab = () => {
 
     return (
         <Main>
-            <h2>Sou o Main</h2>
+            <ConteudoMsg>Sou o Main</ConteudoMsg>
         </Main>
 
     )

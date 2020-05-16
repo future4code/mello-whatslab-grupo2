@@ -10,10 +10,9 @@ const Container = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-background-color: #D8D8D8;
+background-color: #2F3136;
 width:100%;
 height:80vh;
-border: 2px solid black;
 margin: 0;
 padding:0;
 `
