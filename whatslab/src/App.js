@@ -21,7 +21,7 @@ function App() {
   return (
     <Container>
       <HeaderWhatsLab />
-      <MainWhatsLab />
+      <MainWhatsLab></MainWhatsLab>
       <ListMessenger />
     </Container>
 
