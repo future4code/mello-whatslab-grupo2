@@ -37,60 +37,25 @@ margin-top: 2px;
 `
 
 
-class ListMessenger extends React.Component {
-        state = {
-            listMessenger: [
-                {
-                    nomeUsuario: '',
-                    messenger: ''
-                },
+const ListMessenger = (props) => {
 
-                {
-                    nomeUsuario: '',
-                    messenger: ''
-                }
-            ],
+    const listaDeComponentes = this.state.listMessenger.map((listMessenger) => {
+        return (
+            <p>
+                {listMessenger.nomeUsuario} - {listMessenger.messenger}
+            </p>
+        )
+    })
 
-            valorInputNomeUsuario: "",
-            valorInputMessenger: "",
-        };
+    return (
 
-    adicionarMessenger = () => {
-        const newMessenger = {
-            nomeUsuario: this.state.valorInputNomeUsuario,
-            messenger: this.state.valorInputMessenger
-        };
-        const novaMensagem = [...this.state.listMessenger, newMessenger];
-
-        this.setState({ listMessenger: novaMensagem })
-    };
-
-    onChangeInputUsuario = (event) => {
-        this.setState({ valorInputNomeUsuario: event.target.value});
-    };
-
-    onChangeInputMensagem = (event) => {
-        this.setState({ valorInputMessenger: event.target.value});
-    };
-
-        render() {
-            const listaDeComponentes = this.state.listMessenger.map((listMessenger) => {
-                return (
-                    <p>
-                        {listMessenger.nomeUsuario} - {listMessenger.messenger}
-                    </p>
-                )
-            })
-
-            return (
-                <SessaoEnviodeMensangem>
-                    <InputUsuario value={this.state.valorInputNomeUsuario} onChange={this.onChangeInputUsuario} placeholder="Usuario"></InputUsuario>
-                    <InputMensagem value={this.state.valorInputMessenger} onChange={this.onChangeInputMensagem} placeholder="Mensagem"></InputMensagem>
-                    <Button onClick={this.adicionarMessenger}>ENVIAR</Button>
-                    <div>{listaDeComponentes}</div>
-                </SessaoEnviodeMensangem>
-            )
-        };
+        <SessaoEnviodeMensangem>
+            <InputUsuario value={props.inputNomeUsuario} onChange={this.onChangeInputUsuario} placeholder="Usuario"></InputUsuario>
+            <InputMensagem value={this.state.valorInputMessenger} onChange={this.onChangeInputMensagem} placeholder="Mensagem"></InputMensagem>
+            <Button onClick={this.adicionarMessenger}>ENVIAR</Button>
+            <p>{listaDeComponentes}</p>
+        </SessaoEnviodeMensangem>
+    )
 };
 
 
