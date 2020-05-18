@@ -12,7 +12,7 @@ align-content: center;
 flex-direction: row;
 border-radius: 15px;
 justify-content:space-evenly;
-background-color: #202225;
+background-color: #CD4F39;
 height: 12vh;
 `
 
@@ -20,34 +20,38 @@ const InputUsuario = styled.input`
 width: 12%;
 border-radius: 10px;
 height: 7vh;
-margin-top: 5px;
+margin-top: 20px;
+color: black;
+font-family: Verdana;
+font-size: 20px;
+text-align: center;
 `
 
 const Button = styled.button`
 width: 10%;
-background-color: #8000FF;
+background-color: #8B2500;
 border-radius: 10px;
 height: 8vh;
-margin-top: 5px;
+margin-top: 20px;
+color: white;
+font-size: 20px;
+font-family: Verdana;
 `
 
 const InputMensagem = styled.input`
 width: 70%;
 border-radius: 10px;
 height: 8vh;
-margin-top: 2px;
+margin-top: 16px;
+color: black;
+font-size: 20px;
+font-family: Verdana;
 `
 
 
 class Messenger extends React.Component {
     state = {
-        mensager: [
-            {
-                nomeUsuario: '',
-                messenger: ''
-            },
-
-        ],
+        mensager: [],
 
         valorInputNomeUsuario: "",
         valorInputMessenger: "",
@@ -55,6 +59,7 @@ class Messenger extends React.Component {
 
     adicionarMessenger = () => {
         const newMessenger = {
+            id: Date.now(),
             nomeUsuario: this.state.valorInputNomeUsuario,
             messenger: this.state.valorInputMessenger
         };
@@ -66,8 +71,9 @@ class Messenger extends React.Component {
 
     };
 
-    excluirMensagem = () => {
-        console.log('msg excluida');
+    excluirMensagem = (id) => {
+        const novaMensagem = this.state.mensager.filter(mensagem => mensagem.id !== id)
+        this.setState({ mensager: novaMensagem })
     }
 
     onChangeInputUsuario = (event) => {
@@ -81,13 +87,13 @@ class Messenger extends React.Component {
     render() {
         const listaDeComponentes = this.state.mensager.map((msg) => {
             return (
-                <p>{msg.nomeUsuario} : {msg.messenger}</p>
+                <p onDoubleClick={() => {this.excluirMensagem(msg.id)}}>{msg.nomeUsuario} : {msg.messenger}</p>
             )
         })
 
         return (
             <>
-                <div onClick={this.excluirMensagem}>{listaDeComponentes}</div>
+                <div>{listaDeComponentes}</div>
                 <SessaoEnviodeMensangem>
 
                     <InputUsuario value={this.state.valorInputNomeUsuario} onChange={this.onChangeInputUsuario} placeholder="Usuario"></InputUsuario>
